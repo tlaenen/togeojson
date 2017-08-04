@@ -214,6 +214,10 @@ var toGeoJSON = (function() {
                     polyStyle = get1(root, 'PolyStyle'),
                     visibility = get1(root, 'visibility');
 
+                if(root.parentNode.nodeName.toUpperCase() === 'FOLDER') {
+                    properties.__FOLDER__ = nodeVal(get1(root.parentNode, 'name'));
+                }
+
                 if (!geomsAndTimes.geoms.length) return [];
                 if (name) properties.name = name;
                 if (address) properties.address = address;
